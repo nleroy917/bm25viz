@@ -28,21 +28,23 @@ export function CorpusStatsPanel({
     <section>
       <SectionLabel number={2} title="Corpus Statistics" />
       <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 text-center">
           <StatCard
             label="Total Documents (N)"
             value={N}
+            colorType="idf"
           />
           <StatCard
             label="Avg Document Length (avgdl)"
             value={avgdl.toFixed(1)}
             detail={`= total words / ${N} docs`}
+            colorType="docLen"
           />
         </div>
 
         <Card>
-          <CardContent className="pt-5 pb-4">
-            <h3 className="text-sm font-medium mb-3">IDF Explorer</h3>
+          <CardContent className="pt-2 pb-4">
+            <h3 className="text-xl font-bold mb-3">IDF Explorer</h3>
             <IDFExplorer
               termStats={termStats}
               selectedTerm={selectedIdfTerm}
@@ -52,7 +54,6 @@ export function CorpusStatsPanel({
             />
           </CardContent>
         </Card>
-
         <Card>
           <CardContent className="pt-5 pb-4">
             <h3 className="text-sm font-medium mb-3">Color Legend</h3>

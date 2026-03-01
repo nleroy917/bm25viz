@@ -2,6 +2,7 @@
 
 import { KaTeXInline } from "@/components/shared/katex-inline";
 import { ComponentIndicator } from "@/components/shared/component-indicator";
+import { COLORS } from "@/lib/colors";
 import type { TermScore } from "@/lib/types";
 
 interface ScoreBreakdownProps {
@@ -98,13 +99,13 @@ function TermScoreCard({
       {/* BM25 formula with substituted values */}
       <div className="py-1">
         <KaTeXInline
-          math={`\\text{IDF} \\cdot \\frac{tf \\cdot (k_1 + 1)}{tf + k_1 \\cdot (1 - b + b \\cdot \\frac{|D|}{\\text{avgdl}})}`}
+          math={`\\textcolor{${COLORS.idf.hex}}{\\text{IDF}} \\cdot \\frac{\\textcolor{${COLORS.tf.hex}}{tf} \\cdot (k_1 + 1)}{\\textcolor{${COLORS.tf.hex}}{tf} + k_1 \\cdot \\textcolor{${COLORS.docLen.hex}}{(1 - b + b \\cdot \\frac{|D|}{\\text{avgdl}})}}`}
           display
         />
       </div>
       <div className="py-1">
         <KaTeXInline
-          math={`= ${ts.idf.toFixed(3)} \\cdot \\frac{${ts.tf} \\cdot (${ts.k1} + 1)}{${ts.tf} + ${ts.k1} \\cdot (1 - ${ts.b} + ${ts.b} \\cdot \\frac{${ts.docLen}}{${ts.avgdl.toFixed(1)}})} = ${ts.score.toFixed(3)}`}
+          math={`= \\textcolor{${COLORS.idf.hex}}{${ts.idf.toFixed(3)}} \\cdot \\frac{\\textcolor{${COLORS.tf.hex}}{${ts.tf}} \\cdot (${ts.k1} + 1)}{\\textcolor{${COLORS.tf.hex}}{${ts.tf}} + ${ts.k1} \\cdot \\textcolor{${COLORS.docLen.hex}}{(1 - ${ts.b} + ${ts.b} \\cdot \\frac{${ts.docLen}}{${ts.avgdl.toFixed(1)}})}} = ${ts.score.toFixed(3)}`}
           display
         />
       </div>

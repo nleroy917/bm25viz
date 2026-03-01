@@ -22,14 +22,14 @@ export function DocumentEditor({ index, text, onChange, onRemove, canRemove }: D
         value={text}
         onChange={(e) => onChange(e.target.value)}
         placeholder={`Enter document ${index + 1} text...`}
-        className="min-h-[60px] resize-none text-sm"
+        className="min-h-15 resize-none text-sm"
         rows={2}
       />
       {canRemove && (
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-0 right-0 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute -top-1.5 right-0 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
           onClick={onRemove}
         >
           <X className="h-3 w-3" />

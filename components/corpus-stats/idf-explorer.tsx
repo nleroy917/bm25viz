@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FormulaDisplay } from "./formula-display";
+import { COLORS } from "@/lib/colors";
 import type { TermStats } from "@/lib/types";
 
 interface IDFExplorerProps {
@@ -40,7 +41,7 @@ export function IDFExplorer({
       <div className="flex items-center gap-3">
         <span className="text-sm font-medium whitespace-nowrap">Query term:</span>
         <Select value={selectedTerm ?? undefined} onValueChange={onSelectTerm}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-45">
             <SelectValue placeholder="Select a term" />
           </SelectTrigger>
           <SelectContent>
@@ -60,8 +61,8 @@ export function IDFExplorer({
           onMouseLeave={() => onHoverTerm(null)}
         >
           <FormulaDisplay
-            formula={`\\text{IDF}(t) = \\ln\\!\\left(\\frac{N - df(t) + 0.5}{df(t) + 0.5} + 1\\right)`}
-            substituted={`= \\ln\\!\\left(\\frac{${N} - ${selected.df} + 0.5}{${selected.df} + 0.5} + 1\\right) = ${selected.idf.toFixed(3)}`}
+            formula={`\\textcolor{${COLORS.idf.hex}}{\\text{IDF}}(t) = \\ln\\!\\left(\\frac{N - df(t) + 0.5}{df(t) + 0.5} + 1\\right)`}
+            substituted={`= \\ln\\!\\left(\\frac{${N} - ${selected.df} + 0.5}{${selected.df} + 0.5} + 1\\right) = \\textcolor{${COLORS.idf.hex}}{${selected.idf.toFixed(3)}}`}
           />
           <p className="text-sm text-muted-foreground">{selected.explanation}</p>
         </div>
